@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Số Có Hiệu Ứng</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header><a href="index.html">← Trang chủ</a><h2>🎯 Random Số</h2></header>
+  <div class="container">
+    <p>Nhập khoảng số muốn random:</p>
+    <input type="number" id="min" placeholder="Từ">
+    <input type="number" id="max" placeholder="Đến">
+    <br>
+    <button onclick="startSpin()">🎰 Quay Số!</button>
+    <h2 id="result">Kết quả sẽ hiện ở đây</h2>
+  </div>
+
+  <div class="ads">
+    <p>Quảng cáo sẽ hiển thị tại đây</p>
+  </div>
+  <script >
+    let spinning = false;
+
+    function startSpin() {
+      if (spinning) return; // tránh bấm nhiều lần
+      const min = parseInt(document.getElementById("min").value);
+      const max = parseInt(document.getElementById("max").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(min) || isNaN(max) || min >= max) {
+        result.textContent = "⚠️ Nhập khoảng hợp lệ!";
+        return;
+      }
+
+      spinning = true;
+      result.classList.add("spin");
+      result.textContent = "🔄 Đang quay...";
+
+      let duration = 2500; // thời gian quay tổng
+      let elapsed = 0;
+      let interval = 60; // thời gian giữa các lần đổi số (ms)
+
+      const spinInterval = setInterval(() => {
+        const number = Math.floor(Math.random() * (max - min + 1)) + min;
+        result.textContent = number;
+
+        // sau mỗi vòng, tăng khoảng cách để quay chậm dần
+        elapsed += interval;
+        interval += 20;
+
+        if (elapsed >= duration) {
+          clearInterval(spinInterval);
+          const finalNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+          result.classList.remove("spin");
+          result.textContent = `🎉 Kết quả: ${finalNumber}`;
+          spinning = false;
+        }
+      }, interval);
+    }
+
+  </script>
+  <footer>
+    <p>© 2025 Random Tool VN | Made with NXS04</p>
+  </footer>
+</body>
+</html>

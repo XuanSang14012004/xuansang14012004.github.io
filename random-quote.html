@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Câu Nói</title>
+  <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+  <header><a href="index.html">← Trang chủ</a>
+    <h2>💬 Random Câu Nói</h2>
+  </header>
+
+  <div class="container">
+    <div class="spinner" id="spinner"></div>
+    <p id="quote">Hãy bấm nút để lấy cảm hứng!</p>
+    <button onclick="randomQuote()">Random!</button>
+  </div>
+  
+  <script>
+    const quotes = [
+      "Thất bại là mẹ thành công.",
+      "Không có gì là không thể.",
+      "Hôm nay bạn đã cố gắng hết mình chưa?",
+      "Kiên trì là chìa khóa của thành công.",
+      "May mắn là phần thưởng cho sự chuẩn bị.",
+      "Càng cố gắng, may mắn càng mỉm cười với bạn.",
+      "Mọi con số đều có ý nghĩa riêng – bạn chỉ cần tìm ra nó.",
+      "Đôi khi số ngẫu nhiên lại chính là định mệnh!",
+      "Không có gì là ngẫu nhiên, chỉ là bạn chưa hiểu quy luật mà thôi.",
+      "Số đẹp nhất là số khiến bạn mỉm cười 😊",
+      "Một ngày tốt lành bắt đầu bằng một con số may mắn!",
+      "Bạn vừa chứng minh xác suất 1 trong N là có thật 😄",
+      "Thành công không đến từ may mắn, mà từ nỗ lực."
+    ];
+
+    function randomQuote() {
+      const quoteEl = document.getElementById("quote");
+      const spinner = document.getElementById("spinner");
+
+      // Hiện vòng xoay
+      spinner.style.display = "block";
+      quoteEl.textContent = "Đang quay cảm hứng... ✨";
+
+      // Sau 2 giây random quote
+      setTimeout(() => {
+        const i = Math.floor(Math.random() * quotes.length);
+        spinner.style.display = "none";
+        quoteEl.textContent = `💬 ${quotes[i]}`;
+      }, 2000);
+    }
+  </script>
+
+  <footer>
+    <p>© 2025 Random Tool VN | Made with NXS04</p>
+  </footer>
+</body>
+</html>

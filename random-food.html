@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Món Ăn</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <header>
+    <a href="index.html">← Trang chủ</a>
+    <h2>🍔 Random Món Ăn</h2>
+  </header>
+
+  <div class="main-layout">
+    <!-- Khu vực random -->
+    <div class="container">
+      <button onclick="randomFood()">Tôi nên ăn gì hôm nay?</button>
+      <div class="spinner" id="spinner"></div>
+      <h2 id="food">🤔...</h2>
+
+      <hr>
+      <p>Thêm món ăn mới 🍜</p>
+      <input type="text" id="newFood" placeholder="Nhập tên món ăn...">
+      <button onclick="addFood()">Thêm món</button>
+    </div>
+
+    <!-- Danh sách món -->
+    <div class="food-list">
+      <h3>Danh sách món ăn 🍽️</h3>
+      <ul id="foodList"></ul>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <footer>
+    <p>© 2025 Random Tool VN | Made with NXS04</p>
+  </footer>
+</body>
+</html>
